@@ -3,13 +3,13 @@ grammar Calculator;
 // REGLAS DEL PARSER
 dsl: regla+ accion+ EOF ;
 
-regla: REGLA_KW QUOTE ID QUOTE LBRACE CUANDO_KW condicion ENTONCES_KW comando RBRACE ;
+regla: REGLA_KW COMILLA IDENTIFICADOR COMILLA LLAVE_ABRE CUANDO_KW condicion ENTONCES_KW comando LLAVE_CIERRA ;
 
-accion: ACCION_KW QUOTE (ID | AGREGAR_USUARIO | AGREGAR_IP | ACTIVAR_MONITOREO) QUOTE LBRACE RBRACE ;
+accion: ACCION_KW COMILLA (IDENTIFICADOR | AGREGAR_USUARIO | AGREGAR_IP | ACTIVAR_MONITOREO) COMILLA LLAVE_ABRE LLAVE_CIERRA ;
 
 condicion
     : ACCESO_NO_AUTORIZADO                #condAcceso
-    | INTENTOS_FALLIDOS GT DIGITO         #condIntentos
+    | INTENTOS_FALLIDOS MAYOR_QUE DIGITO  #condIntentos
     | ACCESO_SENSIBLES Y_KW NO_ADMIN      #condSospechosa
     ;
 
@@ -35,12 +35,12 @@ AGREGAR_USUARIO      : 'agregarUsuarioAListaNegra' ;
 AGREGAR_IP           : 'agregarIPAListaNegra' ;
 ACTIVAR_MONITOREO    : 'activarMonitoreoDetallado' ;
 
-LBRACE : '{' ;
-RBRACE : '}' ;
-QUOTE  : '\'' ;
-GT     : '>' ;
+LLAVE_ABRE   : '{' ;
+LLAVE_CIERRA : '}' ;
+COMILLA      : '\'' ;
+MAYOR_QUE    : '>' ;
 
-ID     : [a-zA-Z] [a-zA-Z0-9_]* ;
-DIGITO : [0-9] ;
+IDENTIFICADOR : [a-zA-Z] [a-zA-Z0-9_]* ;
+DIGITO        : [0-9] ;
 
-WS : [ \t\r\n]+ -> skip ;
+ESPACIOS : [ \t\r\n]+ -> skip ;

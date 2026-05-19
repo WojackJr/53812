@@ -1,4 +1,4 @@
-// Generated from /home/Brian/Escritorio/53812/Calculator.g4 by ANTLR 4.13.1
+// Generated from /home/mapag8/Escritorio/53812/Analizador/Calculator.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CalculatorParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.9.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -18,8 +18,8 @@ public class CalculatorParser extends Parser {
 	public static final int
 		REGLA_KW=1, ACCION_KW=2, CUANDO_KW=3, ENTONCES_KW=4, ACCESO_NO_AUTORIZADO=5, 
 		INTENTOS_FALLIDOS=6, ACCESO_SENSIBLES=7, Y_KW=8, NO_ADMIN=9, AGREGAR_USUARIO=10, 
-		AGREGAR_IP=11, ACTIVAR_MONITOREO=12, LBRACE=13, RBRACE=14, QUOTE=15, GT=16, 
-		ID=17, DIGITO=18, WS=19;
+		AGREGAR_IP=11, ACTIVAR_MONITOREO=12, LLAVE_ABRE=13, LLAVE_CIERRA=14, COMILLA=15, 
+		MAYOR_QUE=16, IDENTIFICADOR=17, DIGITO=18, ESPACIOS=19;
 	public static final int
 		RULE_dsl = 0, RULE_regla = 1, RULE_accion = 2, RULE_condicion = 3, RULE_comando = 4;
 	private static String[] makeRuleNames() {
@@ -42,8 +42,8 @@ public class CalculatorParser extends Parser {
 		return new String[] {
 			null, "REGLA_KW", "ACCION_KW", "CUANDO_KW", "ENTONCES_KW", "ACCESO_NO_AUTORIZADO", 
 			"INTENTOS_FALLIDOS", "ACCESO_SENSIBLES", "Y_KW", "NO_ADMIN", "AGREGAR_USUARIO", 
-			"AGREGAR_IP", "ACTIVAR_MONITOREO", "LBRACE", "RBRACE", "QUOTE", "GT", 
-			"ID", "DIGITO", "WS"
+			"AGREGAR_IP", "ACTIVAR_MONITOREO", "LLAVE_ABRE", "LLAVE_CIERRA", "COMILLA", 
+			"MAYOR_QUE", "IDENTIFICADOR", "DIGITO", "ESPACIOS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -97,7 +97,6 @@ public class CalculatorParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
-	@SuppressWarnings("CheckReturnValue")
 	public static class DslContext extends ParserRuleContext {
 		public TerminalNode EOF() { return getToken(CalculatorParser.EOF, 0); }
 		public List<ReglaContext> regla() {
@@ -116,14 +115,6 @@ public class CalculatorParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_dsl; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterDsl(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitDsl(this);
-		}
 	}
 
 	public final DslContext dsl() throws RecognitionException {
@@ -176,15 +167,14 @@ public class CalculatorParser extends Parser {
 		return _localctx;
 	}
 
-	@SuppressWarnings("CheckReturnValue")
 	public static class ReglaContext extends ParserRuleContext {
 		public TerminalNode REGLA_KW() { return getToken(CalculatorParser.REGLA_KW, 0); }
-		public List<TerminalNode> QUOTE() { return getTokens(CalculatorParser.QUOTE); }
-		public TerminalNode QUOTE(int i) {
-			return getToken(CalculatorParser.QUOTE, i);
+		public List<TerminalNode> COMILLA() { return getTokens(CalculatorParser.COMILLA); }
+		public TerminalNode COMILLA(int i) {
+			return getToken(CalculatorParser.COMILLA, i);
 		}
-		public TerminalNode ID() { return getToken(CalculatorParser.ID, 0); }
-		public TerminalNode LBRACE() { return getToken(CalculatorParser.LBRACE, 0); }
+		public TerminalNode IDENTIFICADOR() { return getToken(CalculatorParser.IDENTIFICADOR, 0); }
+		public TerminalNode LLAVE_ABRE() { return getToken(CalculatorParser.LLAVE_ABRE, 0); }
 		public TerminalNode CUANDO_KW() { return getToken(CalculatorParser.CUANDO_KW, 0); }
 		public CondicionContext condicion() {
 			return getRuleContext(CondicionContext.class,0);
@@ -193,19 +183,11 @@ public class CalculatorParser extends Parser {
 		public ComandoContext comando() {
 			return getRuleContext(ComandoContext.class,0);
 		}
-		public TerminalNode RBRACE() { return getToken(CalculatorParser.RBRACE, 0); }
+		public TerminalNode LLAVE_CIERRA() { return getToken(CalculatorParser.LLAVE_CIERRA, 0); }
 		public ReglaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_regla; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterRegla(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitRegla(this);
-		}
 	}
 
 	public final ReglaContext regla() throws RecognitionException {
@@ -217,13 +199,13 @@ public class CalculatorParser extends Parser {
 			setState(22);
 			match(REGLA_KW);
 			setState(23);
-			match(QUOTE);
+			match(COMILLA);
 			setState(24);
-			match(ID);
+			match(IDENTIFICADOR);
 			setState(25);
-			match(QUOTE);
+			match(COMILLA);
 			setState(26);
-			match(LBRACE);
+			match(LLAVE_ABRE);
 			setState(27);
 			match(CUANDO_KW);
 			setState(28);
@@ -233,7 +215,7 @@ public class CalculatorParser extends Parser {
 			setState(30);
 			comando();
 			setState(31);
-			match(RBRACE);
+			match(LLAVE_CIERRA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -247,16 +229,15 @@ public class CalculatorParser extends Parser {
 		return _localctx;
 	}
 
-	@SuppressWarnings("CheckReturnValue")
 	public static class AccionContext extends ParserRuleContext {
 		public TerminalNode ACCION_KW() { return getToken(CalculatorParser.ACCION_KW, 0); }
-		public List<TerminalNode> QUOTE() { return getTokens(CalculatorParser.QUOTE); }
-		public TerminalNode QUOTE(int i) {
-			return getToken(CalculatorParser.QUOTE, i);
+		public List<TerminalNode> COMILLA() { return getTokens(CalculatorParser.COMILLA); }
+		public TerminalNode COMILLA(int i) {
+			return getToken(CalculatorParser.COMILLA, i);
 		}
-		public TerminalNode LBRACE() { return getToken(CalculatorParser.LBRACE, 0); }
-		public TerminalNode RBRACE() { return getToken(CalculatorParser.RBRACE, 0); }
-		public TerminalNode ID() { return getToken(CalculatorParser.ID, 0); }
+		public TerminalNode LLAVE_ABRE() { return getToken(CalculatorParser.LLAVE_ABRE, 0); }
+		public TerminalNode LLAVE_CIERRA() { return getToken(CalculatorParser.LLAVE_CIERRA, 0); }
+		public TerminalNode IDENTIFICADOR() { return getToken(CalculatorParser.IDENTIFICADOR, 0); }
 		public TerminalNode AGREGAR_USUARIO() { return getToken(CalculatorParser.AGREGAR_USUARIO, 0); }
 		public TerminalNode AGREGAR_IP() { return getToken(CalculatorParser.AGREGAR_IP, 0); }
 		public TerminalNode ACTIVAR_MONITOREO() { return getToken(CalculatorParser.ACTIVAR_MONITOREO, 0); }
@@ -264,14 +245,6 @@ public class CalculatorParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_accion; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterAccion(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitAccion(this);
-		}
 	}
 
 	public final AccionContext accion() throws RecognitionException {
@@ -284,10 +257,10 @@ public class CalculatorParser extends Parser {
 			setState(33);
 			match(ACCION_KW);
 			setState(34);
-			match(QUOTE);
+			match(COMILLA);
 			setState(35);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 138240L) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << AGREGAR_USUARIO) | (1L << AGREGAR_IP) | (1L << ACTIVAR_MONITOREO) | (1L << IDENTIFICADOR))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -296,11 +269,11 @@ public class CalculatorParser extends Parser {
 				consume();
 			}
 			setState(36);
-			match(QUOTE);
+			match(COMILLA);
 			setState(37);
-			match(LBRACE);
+			match(LLAVE_ABRE);
 			setState(38);
-			match(RBRACE);
+			match(LLAVE_CIERRA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -314,7 +287,6 @@ public class CalculatorParser extends Parser {
 		return _localctx;
 	}
 
-	@SuppressWarnings("CheckReturnValue")
 	public static class CondicionContext extends ParserRuleContext {
 		public CondicionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -326,48 +298,21 @@ public class CalculatorParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	@SuppressWarnings("CheckReturnValue")
 	public static class CondSospechosaContext extends CondicionContext {
 		public TerminalNode ACCESO_SENSIBLES() { return getToken(CalculatorParser.ACCESO_SENSIBLES, 0); }
 		public TerminalNode Y_KW() { return getToken(CalculatorParser.Y_KW, 0); }
 		public TerminalNode NO_ADMIN() { return getToken(CalculatorParser.NO_ADMIN, 0); }
 		public CondSospechosaContext(CondicionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterCondSospechosa(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitCondSospechosa(this);
-		}
 	}
-	@SuppressWarnings("CheckReturnValue")
 	public static class CondIntentosContext extends CondicionContext {
 		public TerminalNode INTENTOS_FALLIDOS() { return getToken(CalculatorParser.INTENTOS_FALLIDOS, 0); }
-		public TerminalNode GT() { return getToken(CalculatorParser.GT, 0); }
+		public TerminalNode MAYOR_QUE() { return getToken(CalculatorParser.MAYOR_QUE, 0); }
 		public TerminalNode DIGITO() { return getToken(CalculatorParser.DIGITO, 0); }
 		public CondIntentosContext(CondicionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterCondIntentos(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitCondIntentos(this);
-		}
 	}
-	@SuppressWarnings("CheckReturnValue")
 	public static class CondAccesoContext extends CondicionContext {
 		public TerminalNode ACCESO_NO_AUTORIZADO() { return getToken(CalculatorParser.ACCESO_NO_AUTORIZADO, 0); }
 		public CondAccesoContext(CondicionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterCondAcceso(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitCondAcceso(this);
-		}
 	}
 
 	public final CondicionContext condicion() throws RecognitionException {
@@ -392,7 +337,7 @@ public class CalculatorParser extends Parser {
 				setState(41);
 				match(INTENTOS_FALLIDOS);
 				setState(42);
-				match(GT);
+				match(MAYOR_QUE);
 				setState(43);
 				match(DIGITO);
 				}
@@ -424,7 +369,6 @@ public class CalculatorParser extends Parser {
 		return _localctx;
 	}
 
-	@SuppressWarnings("CheckReturnValue")
 	public static class ComandoContext extends ParserRuleContext {
 		public ComandoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -436,44 +380,17 @@ public class CalculatorParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	@SuppressWarnings("CheckReturnValue")
 	public static class CmdMonitoreoContext extends ComandoContext {
 		public TerminalNode ACTIVAR_MONITOREO() { return getToken(CalculatorParser.ACTIVAR_MONITOREO, 0); }
 		public CmdMonitoreoContext(ComandoContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterCmdMonitoreo(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitCmdMonitoreo(this);
-		}
 	}
-	@SuppressWarnings("CheckReturnValue")
 	public static class CmdIPContext extends ComandoContext {
 		public TerminalNode AGREGAR_IP() { return getToken(CalculatorParser.AGREGAR_IP, 0); }
 		public CmdIPContext(ComandoContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterCmdIP(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitCmdIP(this);
-		}
 	}
-	@SuppressWarnings("CheckReturnValue")
 	public static class CmdUsuarioContext extends ComandoContext {
 		public TerminalNode AGREGAR_USUARIO() { return getToken(CalculatorParser.AGREGAR_USUARIO, 0); }
 		public CmdUsuarioContext(ComandoContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).enterCmdUsuario(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitCmdUsuario(this);
-		}
 	}
 
 	public final ComandoContext comando() throws RecognitionException {
@@ -523,40 +440,22 @@ public class CalculatorParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u00137\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
-		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0001"+
-		"\u0000\u0004\u0000\f\b\u0000\u000b\u0000\f\u0000\r\u0001\u0000\u0004\u0000"+
-		"\u0011\b\u0000\u000b\u0000\f\u0000\u0012\u0001\u0000\u0001\u0000\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0002\u0001"+
-		"\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001"+
-		"\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001"+
-		"\u0003\u0003\u00030\b\u0003\u0001\u0004\u0001\u0004\u0001\u0004\u0003"+
-		"\u00045\b\u0004\u0001\u0004\u0000\u0000\u0005\u0000\u0002\u0004\u0006"+
-		"\b\u0000\u0001\u0002\u0000\n\f\u0011\u00117\u0000\u000b\u0001\u0000\u0000"+
-		"\u0000\u0002\u0016\u0001\u0000\u0000\u0000\u0004!\u0001\u0000\u0000\u0000"+
-		"\u0006/\u0001\u0000\u0000\u0000\b4\u0001\u0000\u0000\u0000\n\f\u0003\u0002"+
-		"\u0001\u0000\u000b\n\u0001\u0000\u0000\u0000\f\r\u0001\u0000\u0000\u0000"+
-		"\r\u000b\u0001\u0000\u0000\u0000\r\u000e\u0001\u0000\u0000\u0000\u000e"+
-		"\u0010\u0001\u0000\u0000\u0000\u000f\u0011\u0003\u0004\u0002\u0000\u0010"+
-		"\u000f\u0001\u0000\u0000\u0000\u0011\u0012\u0001\u0000\u0000\u0000\u0012"+
-		"\u0010\u0001\u0000\u0000\u0000\u0012\u0013\u0001\u0000\u0000\u0000\u0013"+
-		"\u0014\u0001\u0000\u0000\u0000\u0014\u0015\u0005\u0000\u0000\u0001\u0015"+
-		"\u0001\u0001\u0000\u0000\u0000\u0016\u0017\u0005\u0001\u0000\u0000\u0017"+
-		"\u0018\u0005\u000f\u0000\u0000\u0018\u0019\u0005\u0011\u0000\u0000\u0019"+
-		"\u001a\u0005\u000f\u0000\u0000\u001a\u001b\u0005\r\u0000\u0000\u001b\u001c"+
-		"\u0005\u0003\u0000\u0000\u001c\u001d\u0003\u0006\u0003\u0000\u001d\u001e"+
-		"\u0005\u0004\u0000\u0000\u001e\u001f\u0003\b\u0004\u0000\u001f \u0005"+
-		"\u000e\u0000\u0000 \u0003\u0001\u0000\u0000\u0000!\"\u0005\u0002\u0000"+
-		"\u0000\"#\u0005\u000f\u0000\u0000#$\u0007\u0000\u0000\u0000$%\u0005\u000f"+
-		"\u0000\u0000%&\u0005\r\u0000\u0000&\'\u0005\u000e\u0000\u0000\'\u0005"+
-		"\u0001\u0000\u0000\u0000(0\u0005\u0005\u0000\u0000)*\u0005\u0006\u0000"+
-		"\u0000*+\u0005\u0010\u0000\u0000+0\u0005\u0012\u0000\u0000,-\u0005\u0007"+
-		"\u0000\u0000-.\u0005\b\u0000\u0000.0\u0005\t\u0000\u0000/(\u0001\u0000"+
-		"\u0000\u0000/)\u0001\u0000\u0000\u0000/,\u0001\u0000\u0000\u00000\u0007"+
-		"\u0001\u0000\u0000\u000015\u0005\n\u0000\u000025\u0005\u000b\u0000\u0000"+
-		"35\u0005\f\u0000\u000041\u0001\u0000\u0000\u000042\u0001\u0000\u0000\u0000"+
-		"43\u0001\u0000\u0000\u00005\t\u0001\u0000\u0000\u0000\u0004\r\u0012/4";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\259\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\6\2\16\n\2\r\2\16\2\17\3\2\6\2\23\n\2\r"+
+		"\2\16\2\24\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4"+
+		"\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5\62\n\5\3\6\3\6\3"+
+		"\6\5\6\67\n\6\3\6\2\2\7\2\4\6\b\n\2\3\4\2\f\16\23\23\29\2\r\3\2\2\2\4"+
+		"\30\3\2\2\2\6#\3\2\2\2\b\61\3\2\2\2\n\66\3\2\2\2\f\16\5\4\3\2\r\f\3\2"+
+		"\2\2\16\17\3\2\2\2\17\r\3\2\2\2\17\20\3\2\2\2\20\22\3\2\2\2\21\23\5\6"+
+		"\4\2\22\21\3\2\2\2\23\24\3\2\2\2\24\22\3\2\2\2\24\25\3\2\2\2\25\26\3\2"+
+		"\2\2\26\27\7\2\2\3\27\3\3\2\2\2\30\31\7\3\2\2\31\32\7\21\2\2\32\33\7\23"+
+		"\2\2\33\34\7\21\2\2\34\35\7\17\2\2\35\36\7\5\2\2\36\37\5\b\5\2\37 \7\6"+
+		"\2\2 !\5\n\6\2!\"\7\20\2\2\"\5\3\2\2\2#$\7\4\2\2$%\7\21\2\2%&\t\2\2\2"+
+		"&\'\7\21\2\2\'(\7\17\2\2()\7\20\2\2)\7\3\2\2\2*\62\7\7\2\2+,\7\b\2\2,"+
+		"-\7\22\2\2-\62\7\24\2\2./\7\t\2\2/\60\7\n\2\2\60\62\7\13\2\2\61*\3\2\2"+
+		"\2\61+\3\2\2\2\61.\3\2\2\2\62\t\3\2\2\2\63\67\7\f\2\2\64\67\7\r\2\2\65"+
+		"\67\7\16\2\2\66\63\3\2\2\2\66\64\3\2\2\2\66\65\3\2\2\2\67\13\3\2\2\2\6"+
+		"\17\24\61\66";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

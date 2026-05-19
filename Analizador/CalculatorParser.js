@@ -39,8 +39,8 @@ export default class CalculatorParser extends antlr4.Parser {
     static symbolicNames = [ null, "REGLA_KW", "ACCION_KW", "CUANDO_KW", 
                              "ENTONCES_KW", "ACCESO_NO_AUTORIZADO", "INTENTOS_FALLIDOS", 
                              "ACCESO_SENSIBLES", "Y_KW", "NO_ADMIN", "AGREGAR_USUARIO", 
-                             "AGREGAR_IP", "ACTIVAR_MONITOREO", "LBRACE", 
-                             "RBRACE", "QUOTE", "GT", "ID", "DIGITO", "WS" ];
+                             "AGREGAR_IP", "ACTIVAR_MONITOREO", "LLAVE_ABRE", 
+                             "LLAVE_CIERRA", "COMILLA", "MAYOR_QUE", "IDENTIFICADOR", "DIGITO", "ESPACIOS" ];
     static ruleNames = [ "dsl", "regla", "accion", "condicion", "comando" ];
 
     constructor(input) {
@@ -105,23 +105,23 @@ export default class CalculatorParser extends antlr4.Parser {
 	        this.state = 22;
 	        this.match(CalculatorParser.REGLA_KW);
 	        this.state = 23;
-	        this.match(CalculatorParser.QUOTE);
-	        this.state = 24;
-	        this.match(CalculatorParser.ID);
-	        this.state = 25;
-	        this.match(CalculatorParser.QUOTE);
-	        this.state = 26;
-	        this.match(CalculatorParser.LBRACE);
-	        this.state = 27;
-	        this.match(CalculatorParser.CUANDO_KW);
-	        this.state = 28;
-	        this.condicion();
-	        this.state = 29;
-	        this.match(CalculatorParser.ENTONCES_KW);
-	        this.state = 30;
-	        this.comando();
-	        this.state = 31;
-	        this.match(CalculatorParser.RBRACE);
+        this.match(CalculatorParser.COMILLA);
+        this.state = 24;
+        this.match(CalculatorParser.IDENTIFICADOR);
+        this.state = 25;
+        this.match(CalculatorParser.COMILLA);
+        this.state = 26;
+        this.match(CalculatorParser.LLAVE_ABRE);
+        this.state = 27;
+        this.match(CalculatorParser.CUANDO_KW);
+        this.state = 28;
+        this.condicion();
+        this.state = 29;
+        this.match(CalculatorParser.ENTONCES_KW);
+        this.state = 30;
+        this.comando();
+        this.state = 31;
+        this.match(CalculatorParser.LLAVE_CIERRA);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -147,22 +147,22 @@ export default class CalculatorParser extends antlr4.Parser {
 	        this.state = 33;
 	        this.match(CalculatorParser.ACCION_KW);
 	        this.state = 34;
-	        this.match(CalculatorParser.QUOTE);
-	        this.state = 35;
-	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 138240) !== 0))) {
-	        this._errHandler.recoverInline(this);
-	        }
-	        else {
-	        	this._errHandler.reportMatch(this);
-	            this.consume();
-	        }
-	        this.state = 36;
-	        this.match(CalculatorParser.QUOTE);
-	        this.state = 37;
-	        this.match(CalculatorParser.LBRACE);
-	        this.state = 38;
-	        this.match(CalculatorParser.RBRACE);
+        this.match(CalculatorParser.COMILLA);
+        this.state = 35;
+        _la = this._input.LA(1);
+        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 138240) !== 0))) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
+        this.state = 36;
+        this.match(CalculatorParser.COMILLA);
+        this.state = 37;
+        this.match(CalculatorParser.LLAVE_ABRE);
+        this.state = 38;
+        this.match(CalculatorParser.LLAVE_CIERRA);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -198,7 +198,7 @@ export default class CalculatorParser extends antlr4.Parser {
 	            this.state = 41;
 	            this.match(CalculatorParser.INTENTOS_FALLIDOS);
 	            this.state = 42;
-	            this.match(CalculatorParser.GT);
+            this.match(CalculatorParser.MAYOR_QUE);
 	            this.state = 43;
 	            this.match(CalculatorParser.DIGITO);
 	            break;
@@ -289,13 +289,13 @@ CalculatorParser.NO_ADMIN = 9;
 CalculatorParser.AGREGAR_USUARIO = 10;
 CalculatorParser.AGREGAR_IP = 11;
 CalculatorParser.ACTIVAR_MONITOREO = 12;
-CalculatorParser.LBRACE = 13;
-CalculatorParser.RBRACE = 14;
-CalculatorParser.QUOTE = 15;
-CalculatorParser.GT = 16;
-CalculatorParser.ID = 17;
+CalculatorParser.LLAVE_ABRE = 13;
+CalculatorParser.LLAVE_CIERRA = 14;
+CalculatorParser.COMILLA = 15;
+CalculatorParser.MAYOR_QUE = 16;
+CalculatorParser.IDENTIFICADOR = 17;
 CalculatorParser.DIGITO = 18;
-CalculatorParser.WS = 19;
+CalculatorParser.ESPACIOS = 19;
 
 CalculatorParser.RULE_dsl = 0;
 CalculatorParser.RULE_regla = 1;
@@ -374,24 +374,24 @@ class ReglaContext extends antlr4.ParserRuleContext {
 	    return this.getToken(CalculatorParser.REGLA_KW, 0);
 	};
 
-	QUOTE = function(i) {
+	COMILLA = function(i) {
 		if(i===undefined) {
 			i = null;
 		}
 	    if(i===null) {
-	        return this.getTokens(CalculatorParser.QUOTE);
+	        return this.getTokens(CalculatorParser.COMILLA);
 	    } else {
-	        return this.getToken(CalculatorParser.QUOTE, i);
+	        return this.getToken(CalculatorParser.COMILLA, i);
 	    }
 	};
 
 
-	ID() {
-	    return this.getToken(CalculatorParser.ID, 0);
+	IDENTIFICADOR() {
+	    return this.getToken(CalculatorParser.IDENTIFICADOR, 0);
 	};
 
-	LBRACE() {
-	    return this.getToken(CalculatorParser.LBRACE, 0);
+	LLAVE_ABRE() {
+	    return this.getToken(CalculatorParser.LLAVE_ABRE, 0);
 	};
 
 	CUANDO_KW() {
@@ -410,8 +410,8 @@ class ReglaContext extends antlr4.ParserRuleContext {
 	    return this.getTypedRuleContext(ComandoContext,0);
 	};
 
-	RBRACE() {
-	    return this.getToken(CalculatorParser.RBRACE, 0);
+	LLAVE_CIERRA() {
+	    return this.getToken(CalculatorParser.LLAVE_CIERRA, 0);
 	};
 
 	accept(visitor) {
@@ -445,28 +445,28 @@ class AccionContext extends antlr4.ParserRuleContext {
 	    return this.getToken(CalculatorParser.ACCION_KW, 0);
 	};
 
-	QUOTE = function(i) {
+	COMILLA = function(i) {
 		if(i===undefined) {
 			i = null;
 		}
 	    if(i===null) {
-	        return this.getTokens(CalculatorParser.QUOTE);
+	        return this.getTokens(CalculatorParser.COMILLA);
 	    } else {
-	        return this.getToken(CalculatorParser.QUOTE, i);
+	        return this.getToken(CalculatorParser.COMILLA, i);
 	    }
 	};
 
 
-	LBRACE() {
-	    return this.getToken(CalculatorParser.LBRACE, 0);
+	LLAVE_ABRE() {
+	    return this.getToken(CalculatorParser.LLAVE_ABRE, 0);
 	};
 
-	RBRACE() {
-	    return this.getToken(CalculatorParser.RBRACE, 0);
+	LLAVE_CIERRA() {
+	    return this.getToken(CalculatorParser.LLAVE_CIERRA, 0);
 	};
 
-	ID() {
-	    return this.getToken(CalculatorParser.ID, 0);
+	IDENTIFICADOR() {
+	    return this.getToken(CalculatorParser.IDENTIFICADOR, 0);
 	};
 
 	AGREGAR_USUARIO() {
@@ -560,8 +560,8 @@ class CondIntentosContext extends CondicionContext {
 	    return this.getToken(CalculatorParser.INTENTOS_FALLIDOS, 0);
 	};
 
-	GT() {
-	    return this.getToken(CalculatorParser.GT, 0);
+	MAYOR_QUE() {
+	    return this.getToken(CalculatorParser.MAYOR_QUE, 0);
 	};
 
 	DIGITO() {

@@ -1,2 +1,2 @@
-regla 'alerta_stock_minimo' { cuando nivelStockCritico entonces generarPedidoReposicion }
-accion 'generarPedidoReposicion' { }
+regla 'bloqueo_acceso_ilegal' { cuando intentoAccesoFueraHorario entonces agregarUsuarioAListaNegra }
+accion 'agregarUsuarioAListaNegra' { }

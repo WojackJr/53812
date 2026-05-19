@@ -99,13 +99,15 @@ export default class CalculatorLexer extends antlr4.Lexer {
 	static symbolicNames = [ null, "REGLA_KW", "ACCION_KW", "CUANDO_KW", "ENTONCES_KW", 
                           "ACCESO_NO_AUTORIZADO", "INTENTOS_FALLIDOS", "ACCESO_SENSIBLES", 
                           "Y_KW", "NO_ADMIN", "AGREGAR_USUARIO", "AGREGAR_IP", 
-                          "ACTIVAR_MONITOREO", "LBRACE", "RBRACE", "QUOTE", 
-                          "GT", "ID", "DIGITO", "WS" ];
+                          "ACTIVAR_MONITOREO", "LLAVE_ABRE", "LLAVE_CIERRA", 
+                          "COMILLA", "MAYOR_QUE", "IDENTIFICADOR", "DIGITO", 
+                          "ESPACIOS" ];
 	static ruleNames = [ "REGLA_KW", "ACCION_KW", "CUANDO_KW", "ENTONCES_KW", 
                       "ACCESO_NO_AUTORIZADO", "INTENTOS_FALLIDOS", "ACCESO_SENSIBLES", 
                       "Y_KW", "NO_ADMIN", "AGREGAR_USUARIO", "AGREGAR_IP", 
-                      "ACTIVAR_MONITOREO", "LBRACE", "RBRACE", "QUOTE", 
-                      "GT", "ID", "DIGITO", "WS" ];
+                      "ACTIVAR_MONITOREO", "LLAVE_ABRE", "LLAVE_CIERRA", 
+                      "COMILLA", "MAYOR_QUE", "IDENTIFICADOR", "DIGITO", 
+                      "ESPACIOS" ];
 
     constructor(input) {
         super(input)
@@ -126,13 +128,13 @@ CalculatorLexer.NO_ADMIN = 9;
 CalculatorLexer.AGREGAR_USUARIO = 10;
 CalculatorLexer.AGREGAR_IP = 11;
 CalculatorLexer.ACTIVAR_MONITOREO = 12;
-CalculatorLexer.LBRACE = 13;
-CalculatorLexer.RBRACE = 14;
-CalculatorLexer.QUOTE = 15;
-CalculatorLexer.GT = 16;
-CalculatorLexer.ID = 17;
+CalculatorLexer.LLAVE_ABRE = 13;
+CalculatorLexer.LLAVE_CIERRA = 14;
+CalculatorLexer.COMILLA = 15;
+CalculatorLexer.MAYOR_QUE = 16;
+CalculatorLexer.IDENTIFICADOR = 17;
 CalculatorLexer.DIGITO = 18;
-CalculatorLexer.WS = 19;
+CalculatorLexer.ESPACIOS = 19;
 
 
 
