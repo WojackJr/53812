@@ -1,4 +1,4 @@
-// Generated from /home/Brian/Documentos/GitHub/53812/Analizador/Calculator.g4 by ANTLR 4.13.2
+// Generated from /home/Brian/Escritorio/53812/Analizador/Calculator.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

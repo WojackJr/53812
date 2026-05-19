@@ -1,0 +1,2 @@
+regla 'alerta_stock_minimo' { si nivelStockCritico entonces generarPedidoReposicion }
+accion 'generarPedidoReposicion'
